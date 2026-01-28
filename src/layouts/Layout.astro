@@ -1,42 +1,112 @@
 <!DOCTYPE html>
 <html lang="it">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="./logo_senza_sfondo.png" />
-		<title>Ciro A. Strazzullo | Portfolio</title>
-		<meta name="robots" content="index, follow">
-		<meta name="description" content="Portfolio di Ciro A. Strazzullo, sviluppatore web e appassionato di tecnologia." />
-		<meta name="keywords" content="Ciro Strazzullo, Ciro A. Strazzullo, portfolio, sviluppatore web, tecnologia, progetti" />
-		<meta name="author" content="Ciro A. Strazzullo" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Space+Mono:wght@400;700&display=swap"
-			rel="stylesheet"
-		/>
-		<meta property="og:title" content="Ciro A. Strazzullo | Portfolio" />
-		<meta property="og:description" content="Portfolio di Ciro A. Strazzullo, sviluppatore web e appassionato di tecnologia." />
-		<meta property="og:type" content="website" />
-		<meta property="og:image" content="https://ciroastrazzullo.com/logo.png" />
-		<meta property="og:url" content="https://ciroastrazzullo.com" />
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content="Ciro A. Strazzullo | Portfolio" />
-		<meta name="twitter:description" content="Portfolio di Ciro A. Strazzullo, sviluppatore web e appassionato di tecnologia." />
-		<meta name="twitter:image" content="https://ciroastrazzullo.com/logo.png" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="icon" type="image/png" href="/logo_senza_sfondo.png"/>
+    <title>Ciro A. Strazzullo | Portfolio</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Portfolio di Ciro A. Strazzullo, sviluppatore web e appassionato di tecnologia."/>
+    <meta name="keywords"
+          content="Ciro Strazzullo, Ciro A. Strazzullo, portfolio, sviluppatore web, tecnologia, progetti"/>
+    <meta name="author" content="Ciro A. Strazzullo"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Space+Mono:wght@400;700&display=swap"
+            rel="stylesheet"
+    />
+    <meta property="og:title" content="Ciro A. Strazzullo | Portfolio"/>
+    <meta property="og:description"
+          content="Portfolio di Ciro A. Strazzullo, sviluppatore web e appassionato di tecnologia."/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="https://ciroastrazzullo.com/logo.png"/>
+    <meta property="og:url" content="https://ciroastrazzullo.com"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Ciro A. Strazzullo | Portfolio"/>
+    <meta name="twitter:description"
+          content="Portfolio di Ciro A. Strazzullo, sviluppatore web e appassionato di tecnologia."/>
+    <meta name="twitter:image" content="https://ciroastrazzullo.com/logo.png"/>
 
-		<link rel="stylesheet" href="/global.css" />
-	</head>
-	<body class="bg-background">
-		<slot />
-	</body>
+    <link rel="stylesheet" href="/global.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css"/>
+
+</head>
+<body class="bg-background">
+<slot/>
+<script is:inline src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+<script is:inline>
+    window.addEventListener("load", function () {
+        window.cookieconsent.initialise({
+            palette: {
+                popup: {
+                    background: "#222a3a",
+                    text: "#ffffff"
+                },
+                button: {
+                    background: "",
+                    text: "#ffffff",
+                }
+            },
+            theme: "classic",
+            position: "bottom-right",
+            type: "opt-in",
+            revokable: false,
+            content: {
+                message: "Questo sito utilizza i cookie per migliorare l'esperienza utente.",
+                allow: "Accetta",
+                deny: "Rifiuta",
+                link: "Leggi di più",
+                href: "./PrivacyPolicy"
+            },
+            showLink: true,
+            elements: {
+                allow: '<button aria-label="consenti" class="cc-btn   cc-allow">{{allow}}</button>',
+                deny: '<button aria-label="rifiuta" class="cc-btn cc-deny">{{deny}}</button>'
+            },
+            onInitialise: function (status) {
+                const didConsent = this.hasConsented();
+                if (didConsent)
+                    loadGoogleAnalytics();
+                else
+                    alert("Alcune funzionalità potrebbero non essere disponibili senza il consenso dei cookie.");
+
+            },
+            onStatusChange: function (status, chosenBefore) {
+                const didConsent = this.hasConsented();
+                if (didConsent) loadGoogleAnalytics();
+
+            }
+        });
+
+
+    });
+
+    // Funzione per caricare Google Analytics
+    function loadGoogleAnalytics() {
+        const script = document.createElement('script');
+        script.src = "https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X";
+        script.onload = () => {
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = function () {
+                dataLayer.push(arguments);
+            };
+            gtag('js', new Date());
+            gtag('config', 'UA-XXXXXXXXX-X');
+        };
+        document.head.appendChild(script);
+    }
+
+</script>
+</body>
+
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+    html,
+    body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+    }
 </style>
