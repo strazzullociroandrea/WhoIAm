@@ -1,0 +1,47 @@
+---
+import {Github, Linkedin, Mail, Phone} from "lucide-react";
+import {Button} from "@/components/ui/button";
+
+const socialLinks = {
+    linkedin: "https://www.linkedin.com/in/ciro-andrea-strazzullo-927b9823b/",
+    github: "https://github.com/tuo-username",
+    email: "mailto:tua@email.com",
+    phone: "tel:+39123456789"
+};
+---
+
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    {/* Background */}
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_hsl(173_80%_50%_/_0.08)_0%,_transparent_70%)]"/>
+    <div class="absolute top-1/4 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-slow"/>
+    <div class="absolute bottom-1/4 -right-32 w-80 h-80 bg-primary/5 rounded-full blur-3xl animate-pulse-slow"
+         style={{animationDelay: '2s'}}/>
+    <div class="absolute inset-0 bg-[linear-gradient(hsl(222_30%_18%_/_0.3)_1px,transparent_1px),linear-gradient(90deg,hsl(222_30%_18%_/_0.3)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%)]"/>
+
+    <div class="container relative z-10 text-center px-4">
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 animate-slide-up">
+            <span class="gradient-text">Ciro Andrea Strazzullo</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-muted-foreground mb-8 animate-slide-up" style={{animationDelay: '0.1s'}}>
+            Junior Full Stack Developer
+        </p>
+        <div class="flex gap-4 justify-center items-center animate-slide-up" style="animation-delay: 0.2s">
+            <a href="https://github.com/strazzullociroandrea" target="_blank" rel="noreferrer">
+                <Button variant="outline" size="icon">
+                    <Github/>
+                </Button>
+            </a>
+            <a href="https://www.linkedin.com/in/ciro-andrea-strazzullo-8484a5339" target="_blank" rel="noreferrer">
+                <Button variant="outline" size="icon">
+                    <Linkedin/>
+                </Button>
+            </a>
+            <a href="mailto:ciroandreastrazzullo06@gmail.com" rel="noreferrer">
+                <Button size="icon" variant="outline">
+                    <Mail/>
+                </Button>
+            </a>
+        </div>
+    </div>
+
+</section>

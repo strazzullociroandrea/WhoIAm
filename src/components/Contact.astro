@@ -1,0 +1,46 @@
+---
+import {Mail, FileText} from "lucide-react";
+---
+
+<section class="py-20 px-6 max-w-7xl mx-auto" id="contatti">
+    <div class="text-center mb-10">
+        <p class="text-primary font-mono text-xs tracking-[0.2em] uppercase mb-2">02. Contatti</p>
+        <h2 class="gradient-text text-4xl font-bold">Restiamo in contatto</h2>
+    </div>
+
+    <div class="max-w-xl mx-auto text-center">
+        <p class="text-muted-foreground text-base leading-relaxed mb-8">
+            Hai un progetto in mente? Amo le sfide tecniche <br class="hidden md:block"/>
+            e sono sempre aperto a nuove collaborazioni.
+        </p>
+
+        <div class="flex flex-col md:flex-row justify-center items-center gap-4 mt-12 w-full">
+
+            <a href="mailto:ciroandreastrazzullo06@gmail.com"
+               target="_blank"
+               class="flex items-center gap-4 px-6 py-4 rounded-2xl bg-secondary/10 border border-white/5 hover:border-primary/50 transition-all group w-full max-w-sm md:w-auto">
+                <div class="p-2.5 bg-primary/10 rounded-xl text-primary group-hover:bg-primary group-hover:text-black transition-colors shrink-0">
+                    <Mail size={18}/>
+                </div>
+                <div class="flex flex-col items-start leading-tight">
+                    <span class="text-[10px] uppercase tracking-widest text-primary font-bold opacity-70">Email</span>
+                    <span class="text-sm md:text-base font-medium text-foreground/90 truncate">
+                ciroandreastrazzullo06@gmail.com
+            </span>
+                </div>
+            </a>
+
+            <a href="/path-al-tuo-cv.pdf"
+               target="_blank"
+               class="flex w-fit items-center gap-4 px-6 py-4 rounded-2xl bg-secondary/10 border border-white/5 hover:border-primary/50 transition-all group  max-w-sm md:w-auto">
+                <div class="p-2.5 bg-primary/10 rounded-xl text-primary group-hover:bg-primary group-hover:text-black transition-colors shrink-0">
+                    <FileText size={18}/>
+                </div>
+                <div class="flex flex-col text-left">
+                    <span class="text-[10px] uppercase tracking-wider font-bold text-primary">Download</span>
+                    <span class="text-sm font-medium">CV</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
