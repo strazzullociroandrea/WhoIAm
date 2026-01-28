@@ -50,9 +50,27 @@
         to { opacity: 1; }
     }
 }
+/* Stile del pulsante "Accetta" (Allow) */
+.cc-btn.cc-allow {
+    border: 2px solid hsl(173, 80%, 50%) !important; /* Il tuo Ciano */
+    background-color: transparent !important;
+    color: #ffffff !important;
+    transition: all 0.3s ease !important; /* Rende il passaggio al colore fluido */
+    font-weight: bold !important;
+}
 
-/* 3. VARIABILI CSS E BASE */
-@layer base {
+/* Effetto HOVER (quello che cercavi come button-hoover) */
+.cc-btn.cc-allow:hover {
+    background-color: hsl(173, 80%, 50%) !important;
+    color: #080c15 !important; /* Testo scuro sul ciano per leggibilità */
+}
+
+/* Se vuoi sistemare anche il pulsante "Rifiuta" (Deny) */
+.cc-btn.cc-deny {
+    color: #888888 !important;
+    text-decoration: underline !important;
+}
+ @layer base {
     :root {
         --background: 222 47% 6%;
         --foreground: 210 40% 98%;
