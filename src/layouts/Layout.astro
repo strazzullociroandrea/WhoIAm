@@ -26,7 +26,7 @@
     <meta name="twitter:title" content="Ciro A. Strazzullo | Portfolio"/>
     <meta name="twitter:description"
           content="Portfolio di Ciro A. Strazzullo, sviluppatore web e appassionato di tecnologia."/>
-    <meta name="twitter:image" content="https://ciroastrazzullo.com/logo.png"/>
+    <meta name="twitter:image" content="https://ciroastrazzazzullo.com/logo.png"/>
 
     <link rel="stylesheet" href="/global.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css"/>
@@ -39,25 +39,19 @@
     window.addEventListener("load", function () {
         window.cookieconsent.initialise({
             palette: {
-                popup: {
-                    background: "#222a3a",
-                    text: "#ffffff"
-                },
-                button: {
-                    background: "",
-                    text: "#ffffff",
-                }
+                popup: { background: "#222a3a", text: "#ffffff" },
+                button: { background: "#7c3aed", text: "#ffffff" }
             },
             theme: "classic",
             position: "bottom-right",
             type: "opt-in",
-            revokable: false,
+            revokable: true,
             content: {
-                message: "Questo sito utilizza i cookie per migliorare l'esperienza utente.",
+                message: "Questo sito utilizza cookie per migliorare l'esperienza utente; puoi gestire le preferenze.",
                 allow: "Accetta",
                 deny: "Rifiuta",
                 link: "Leggi di più",
-                href: "./PrivacyPolicy"
+                href: "/cookie-policy"
             },
             showLink: true,
             elements: {
@@ -66,31 +60,27 @@
             },
             onInitialise: function (status) {
                 const didConsent = this.hasConsented();
-                if (didConsent)
-                    loadGoogleAnalytics();
+                if (didConsent) loadGoogleAnalytics();
             },
             onStatusChange: function (status, chosenBefore) {
                 const didConsent = this.hasConsented();
                 if (didConsent) loadGoogleAnalytics();
-
             }
         });
-
-
     });
 
-    // Funzione per caricare Google Analytics
+    // Funzione per caricare Google Analytics (sostituisci l'ID con il tuo G-XXXX...)
     function loadGoogleAnalytics() {
+        if (window.__ga_loaded) return;
+        window.__ga_loaded = true;
         const script = document.createElement('script');
-        script.src = "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXX-X";
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-3502LG1BLR";
         script.async = true;
         script.onload = () => {
             window.dataLayer = window.dataLayer || [];
-            window.gtag = function () {
-                dataLayer.push(arguments);
-            };
+            window.gtag = function () { dataLayer.push(arguments); };
             gtag('js', new Date());
-            gtag('config', 'G-XXXXXXXXX-X', { 'anonymize_ip': true });
+            gtag('config', 'G-3502LG1BLR', { 'anonymize_ip': true });
         };
         document.head.appendChild(script);
     }
