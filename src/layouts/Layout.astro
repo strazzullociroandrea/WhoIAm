@@ -68,9 +68,6 @@
                 const didConsent = this.hasConsented();
                 if (didConsent)
                     loadGoogleAnalytics();
-                else
-                    alert("Alcune funzionalità potrebbero non essere disponibili senza il consenso dei cookie.");
-
             },
             onStatusChange: function (status, chosenBefore) {
                 const didConsent = this.hasConsented();
@@ -85,14 +82,15 @@
     // Funzione per caricare Google Analytics
     function loadGoogleAnalytics() {
         const script = document.createElement('script');
-        script.src = "https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X";
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXX-X";
+        script.async = true;
         script.onload = () => {
             window.dataLayer = window.dataLayer || [];
             window.gtag = function () {
                 dataLayer.push(arguments);
             };
             gtag('js', new Date());
-            gtag('config', 'UA-XXXXXXXXX-X');
+            gtag('config', 'G-XXXXXXXXX-X', { 'anonymize_ip': true });
         };
         document.head.appendChild(script);
     }
