@@ -18,5 +18,16 @@ import Projects from "@/components/Projects.astro";
         <About/>
         <Projects/>
         <Contact/>
-    </main>
-</Layout>
+
+        <footer class="max-w-4xl mx-auto py-8 px-6 text-center">
+            <nav aria-label="Link legali" class="text-sm text-muted-foreground">
+                <ul class="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6">
+                    <li><a href="/privacy-policy" class="hover:text-primary underline-offset-2 hover:underline">Informativa sulla Privacy</a></li>
+                    <li><a href="/cookie-policy" class="hover:text-primary underline-offset-2 hover:underline">Cookie Policy</a></li>
+                    <li><a href="/terms-and-conditions" class="hover:text-primary underline-offset-2 hover:underline">Termini e Condizioni</a></li>
+                </ul>
+                <p class="mt-4 text-xs text-muted-foreground">© <span class="font-medium">Ciro Andrea Strazzullo</span> — Ultimo aggiornamento: 29/01/2026</p>
+            </nav>
+        </footer>
+     </main>
+ </Layout>

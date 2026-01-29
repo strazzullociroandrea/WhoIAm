@@ -1,0 +1,165 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar';
+import '../styles/global.css';
+import {ArrowLeft, Cookie, Mail, Printer, Calendar} from "lucide-react";
+---
+
+<Layout>
+    <header>
+        <Navbar client:load/>
+    </header>
+
+    <main class="pt-20">
+        <section class="py-12 px-6 max-w-4xl mx-auto">
+            <div class="flex items-center mb-6">
+                <a href="/" class="flex items-center text-muted-foreground hover:text-primary transition-colors group">
+                    <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform"/>
+                    <span class="ml-3">Torna al sito</span>
+                </a>
+            </div>
+
+            <div class="glass-card p-6 md:p-10 rounded-2xl border border-border shadow-lg bg-card/50 backdrop-blur-sm">
+                <header class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 md:gap-6">
+                    <div>
+                        <h1 class="text-3xl md:text-4xl font-bold gradient-text flex items-center gap-3">
+                            <Cookie size={28} className="text-primary"/>
+                            Cookie Policy
+                        </h1>
+                        <p class="text-sm text-muted-foreground mt-2">
+                            <Calendar size={14} className="inline-block mr-2"/>
+                            Ultimo aggiornamento: 29/01/2026
+                        </p>
+                        <p class="text-sm text-muted-foreground mt-3 italic">Informativa sull&apos;uso dei cookie e
+                            tecnologie simili su questo sito.</p>
+                    </div>
+
+                </header>
+
+                <hr class="my-6 border-border"/>
+
+                <section id="cosa" class="mt-8">
+                    <h2 class="text-xl md:text-2xl font-semibold">Cosa sono i cookie</h2>
+                    <p class="mt-3 text-muted-foreground">I cookie sono piccoli file di testo inviati dal sito al tuo
+                        dispositivo quando lo visiti. Permettono al sito di ricordare le tue azioni e preferenze (come
+                        il consenso ai cookie stessi) per un certo periodo, evitandoti di doverle reinserire ogni volta
+                        che torni sul sito o navighi tra le pagine.</p>
+                </section>
+
+                <section id="tipi" class="mt-8">
+                    <h2 class="text-xl md:text-2xl font-semibold">Tipologie di cookie utilizzati</h2>
+                    <div class="mt-3 text-muted-foreground space-y-4">
+                        <p>Il sito utilizza le seguenti macro-categorie:</p>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li><strong>Cookie Tecnici:</strong> Fondamentali per il funzionamento del sito. Includono i
+                                cookie per la gestione della sessione e quelli che memorizzano la tua scelta sul banner
+                                del consenso.
+                            </li>
+                            <li><strong>Cookie di Analisi (Statistici):</strong> Utilizziamo <strong>Google Analytics 4
+                                (GA4)</strong> per capire come gli utenti interagiscono con il sito. Questi cookie sono
+                                attivati solo previo tuo consenso e i dati vengono trattati in forma aggregata.
+                            </li>
+                            <li><strong>Tecnologie di terze parti:</strong> Alcune risorse sono caricate via CDN (come
+                                <i>jsDelivr</i>) per migliorare le performance tecniche.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="gestione" class="mt-8">
+                    <h2 class="text-xl md:text-2xl font-semibold">Come gestire i cookie</h2>
+                    <p class="mt-3 text-muted-foreground">Puoi revocare il consenso o modificare le preferenze in ogni
+                        momento. Oltre all&apos;uso del nostro banner informativo, puoi configurare il tuo browser per
+                        bloccare o eliminare i cookie attraverso le impostazioni ufficiali:</p>
+                    <ul class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+                        <li>
+                            <a class="p-3 rounded-lg border border-border block text-center hover:bg-primary/10 transition-colors"
+                               href="https://support.google.com/chrome/answer/95647" target="_blank"
+                               rel="noopener noreferrer">Google Chrome</a></li>
+                        <li>
+                            <a class="p-3 rounded-lg border border-border block text-center hover:bg-primary/10 transition-colors"
+                               href="https://support.mozilla.org/it/kb/Gestione%20dei%20cookie" target="_blank"
+                               rel="noopener noreferrer">Mozilla Firefox</a></li>
+                        <li>
+                            <a class="p-3 rounded-lg border border-border block text-center hover:bg-primary/10 transition-colors"
+                               href="https://support.apple.com/it-it/guide/safari/manage-cookies-and-website-data-sfri11471/mac"
+                               target="_blank" rel="noopener noreferrer">Apple Safari</a></li>
+                    </ul>
+                </section>
+
+                <section id="tabella" class="mt-10">
+                    <h2 class="text-xl md:text-2xl font-semibold mb-4">Dettaglio dei cookie utilizzati</h2>
+                    <div class="overflow-x-auto rounded-xl border border-border" role="region" aria-label="Tabella cookie">
+                        <table class="w-full text-sm text-left border-collapse bg-card/30" role="table">
+                            <thead>
+                            <tr class="border-b border-border bg-muted/50">
+                                <th scope="col" class="py-3 px-4 font-semibold uppercase text-[10px] tracking-wider">Fornitore</th>
+                                <th scope="col" class="py-3 px-4 font-semibold uppercase text-[10px] tracking-wider">Nome</th>
+                                <th scope="col" class="py-3 px-4 font-semibold uppercase text-[10px] tracking-wider">Scopo</th>
+                                <th scope="col" class="py-3 px-4 font-semibold uppercase text-[10px] tracking-wider">Scadenza</th>
+                            </tr>
+                            </thead>
+                            <tbody class="text-muted-foreground">
+                            <tr class="border-b border-border/50">
+                                <td class="py-3 px-4 font-medium text-foreground">Proprietario</td>
+                                <td class="py-3 px-4">cookieconsent_status</td>
+                                <td class="py-3 px-4">Memorizza la scelta del consenso</td>
+                                <td class="py-3 px-4">1 anno</td>
+                            </tr>
+                            <tr class="border-b border-border/50">
+                                <td class="py-3 px-4 font-medium text-foreground">Google (GA4)</td>
+                                <td class="py-3 px-4">_ga, _ga_*</td>
+                                <td class="py-3 px-4">Statistica (ID anonimizzato)</td>
+                                <td class="py-3 px-4">2 anni</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 font-medium text-foreground">jsDelivr</td>
+                                <td class="py-3 px-4">CDN</td>
+                                <td class="py-3 px-4">Erogazione tecnica di script/CSS</td>
+                                <td class="py-3 px-4">Sessione</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="contatti" class="mt-12 p-6 rounded-xl bg-muted/30 border border-border">
+                    <h2 class="text-xl font-semibold text-white">Contatti</h2>
+                    <p class="mt-2 text-muted-foreground text-sm">Il Titolare del Trattamento &egrave; <strong>Ciro
+                        Andrea Strazzullo</strong>. Per esercitare i tuoi diritti o richiedere chiarimenti, puoi inviare
+                        un&apos;email a:</p>
+                    <a class="text-primary font-medium hover:underline flex items-center gap-2 mt-2"
+                       href="mailto:ciroandreastrazzullo06@gmail.com">
+                        <Mail size={16}/>
+                        ciroandreastrazzullo06@gmail.com
+                    </a>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <style>
+        .glass-card {
+            transition: transform 0.2s ease-in-out;
+        }
+
+        @media print {
+            header, button, .flex.items-center.mb-6 {
+                display: none !important;
+            }
+
+            .glass-card {
+                border: none;
+                box-shadow: none;
+                transform: none !important;
+                background: white;
+                color: black;
+            }
+
+            .gradient-text {
+                background: none;
+                color: black;
+            }
+        }
+    </style>
+</Layout>

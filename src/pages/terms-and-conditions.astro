@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar';
+import '../styles/global.css';
+import {ArrowLeft, FileText, Calendar} from "lucide-react";
+---
+
+<Layout>
+    <header>
+        <Navbar client:load/>
+    </header>
+
+    <main class="pt-20">
+        <section class="py-12 px-6 max-w-4xl mx-auto">
+            <div class="flex items-center mb-6">
+                <a href="/" class="flex items-center text-muted-foreground hover:text-primary transition-colors group">
+                    <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
+                    <span class="ml-3">Torna alla Home</span>
+                </a>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="glass-card p-6 md:p-10 rounded-2xl border border-border shadow-lg bg-card/50 backdrop-blur-sm">
+                    <header class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 md:gap-6">
+                        <div>
+                            <h1 class="text-3xl md:text-4xl font-bold gradient-text flex items-center gap-3"><FileText size={28} /> Termini e Condizioni</h1>
+                            <p class="text-sm text-muted-foreground mt-2"><Calendar size={14} className="inline-block mr-2"/> Ultimo aggiornamento: 29/01/2026</p>
+                            <p class="text-sm text-muted-foreground mt-3 italic">Ti invitiamo a leggere attentamente i presenti termini prima di utilizzare i servizi del sito.</p>
+                        </div>
+                    </header>
+
+                    <hr class="my-6 border-border" />
+
+                    <section id="accettazione" class="mt-8">
+                        <h2 class="text-xl md:text-2xl font-semibold flex items-center gap-2 text-white">Oggetto e Accettazione</h2>
+                        <p class="mt-3 text-muted-foreground">Il presente sito web fornisce informazioni sulle attivit&agrave; professionali e sui progetti di <strong>Ciro Andrea Strazzullo</strong>. L&apos;accesso e la navigazione comportano l&apos;accettazione incondizionata dei presenti Termini. Se non concordi con quanto riportato, sei invitato a interrompere la navigazione.</p>
+                    </section>
+
+                    <section id="uso-consentito" class="mt-8">
+                        <h2 class="text-xl md:text-2xl font-semibold flex items-center gap-2 text-white">Uso Consentito e Divieti</h2>
+                        <p class="mt-3 text-muted-foreground">L&apos;utente si impegna a utilizzare il sito in modo lecito. &Egrave; severamente vietato:</p>
+                        <ul class="list-disc pl-5 mt-2 text-muted-foreground space-y-1">
+                            <li>Tentare di violare la sicurezza del sito o dei server ospitanti.</li>
+                            <li>Utilizzare tecniche di <i>scraping</i> o estrazione dati automatizzata senza autorizzazione.</li>
+                            <li>Utilizzare il sito per scopi illegali o per diffondere malware.</li>
+                        </ul>
+                    </section>
+
+                    <section id="proprieta" class="mt-8">
+                        <h2 class="text-xl md:text-2xl font-semibold flex items-center gap-2 text-white">Propriet&agrave; Intellettuale</h2>
+                        <p class="mt-3 text-muted-foreground">Tutti i contenuti (testi, codice sorgente, grafica, loghi e immagini) sono protetti dalle leggi sul diritto d&apos;autore. Salvo dove diversamente specificato (es. progetti Open Source con licenza dedicata), la riproduzione, distribuzione o modifica dei contenuti &egrave; vietata senza il preventivo consenso scritto del Titolare.</p>
+                    </section>
+
+                    <section id="responsabilita" class="mt-8 p-4 rounded-xl bg-destructive/5 border border-destructive/10">
+                        <h2 class="text-xl md:text-2xl font-semibold flex items-center gap-2 text-white">Esclusione di Responsabilit&agrave;</h2>
+                        <p class="mt-3 text-muted-foreground text-sm">Sebbene il contenuto sia curato con la massima attenzione, il sito &egrave; fornito &quot;cos&igrave; com&apos;&egrave;&quot; (as-is). Il Titolare non garantisce che il sito sia privo di interruzioni o errori tecnici e non si assume responsabilit&agrave; per eventuali danni derivanti dall&apos;uso delle informazioni presenti o dall&apos;impossibilit&agrave; di accedere al portale.</p>
+                    </section>
+
+                    <section id="link" class="mt-8">
+                        <h2 class="text-xl md:text-2xl font-semibold flex items-center gap-2 text-white">Link Esterni</h2>
+                        <p class="mt-3 text-muted-foreground">Il sito potrebbe contenere collegamenti a piattaforme terze (es. GitHub, LinkedIn). Il Titolare non esercita alcun controllo su tali siti e non assume alcuna responsabilit&agrave; per i loro contenuti o per le loro politiche sulla privacy.</p>
+                    </section>
+
+                    <section id="legge" class="mt-8">
+                        <h2 class="text-xl md:text-2xl font-semibold flex items-center gap-2 text-white">Modifiche e Legge Applicabile</h2>
+                        <p class="mt-3 text-muted-foreground">I presenti Termini possono essere aggiornati periodicamente. L&apos;uso continuativo del sito costituisce accettazione delle nuove condizioni. Il rapporto &egrave; regolato dalla <strong>legge italiana</strong>. Per ogni controversia &egrave; competente il Foro di residenza del Titolare, fatti salvi i diritti previsti a tutela dei consumatori.</p>
+                    </section>
+
+                    <section id="contatti" class="mt-8 mb-4">
+                        <h2 class="text-xl md:text-2xl font-semibold text-white">Titolare del Trattamento</h2>
+                        <div class="mt-3 p-4 rounded-lg bg-muted/30 border border-border">
+                            <p class="text-foreground font-bold">Ciro Andrea Strazzullo</p>
+                            <p class="text-muted-foreground mt-1">Email: <a class="text-primary hover:underline"
+                                                                            href="mailto:ciroandreastrazzullo06@gmail.com">ciroandreastrazzullo06@gmail.com</a>
+                            </p>
+                            <p class="text-muted-foreground mt-1">Cellulare: disponibile su richiesta.</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>

@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar';
 import '../styles/global.css';
-import { ArrowLeft, ShieldCheck, Mail, Printer } from "lucide-react";
+import {ArrowLeft, ShieldCheck, Mail, Printer, Calendar} from "lucide-react";
 ---
 
 <Layout>
@@ -11,119 +11,161 @@ import { ArrowLeft, ShieldCheck, Mail, Printer } from "lucide-react";
     </header>
 
     <main class="pt-20">
-        <section class="py-12 px-6 max-w-7xl mx-auto">
+        <section class="py-12 px-6 max-w-4xl mx-auto">
             <div class="flex items-center mb-6">
-                <button onclick="history.back()" class="flex items-center text-muted-foreground hover:text-primary transition-colors group">
-                    <ArrowLeft size={18} class="group-hover:-translate-x-1 transition-transform" />
-                    <span class="ml-3">Torna alla pagina precedente</span>
-                </button>
+                <a href="/" class="flex items-center text-muted-foreground hover:text-primary transition-colors group">
+                    <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform"/>
+                    <span class="ml-3">Torna al sito</span>
+                </a>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-                <article class="md:col-span-12">
-                    <div class="glass-card p-6 md:p-10 rounded-2xl border border-border shadow-lg bg-card/50 backdrop-blur-sm">
-                        <header class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 md:gap-6">
-                            <div>
-                                <h1 class="text-3xl md:text-4xl font-bold gradient-text">Privacy Policy</h1>
-                                <p class="text-sm text-muted-foreground mt-2">Ultimo aggiornamento: 29/01/2026</p>
-                                <p class="text-sm text-muted-foreground mt-3 max-w-2xl italic">
-                                    Informazioni sulla gestione dei dati personali trattati durante la navigazione su questo sito.
-                                </p>
-                            </div>
-
-                            <div class="flex items-center gap-3">
-                                <button onclick="window.print()" class="flex items-center gap-2 px-4 py-2 rounded-md border border-border text-sm text-muted-foreground hover:bg-primary/10 transition-colors">
-                                    <Printer size={16} /> Stampa
-                                </button>
-                                <a href="mailto:ciroandreastrazzullo06@gmail.com" class="flex items-center gap-2 px-4 py-2 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity">
-                                    <Mail size={16} /> Contatta
-                                </a>
-                            </div>
-                        </header>
-
-                        <hr class="my-6 border-border" />
-
-                        <section id="introduzione" class="mt-4 prose prose-invert max-w-none text-muted-foreground">
-                            <p>
-                                Ai sensi del **Regolamento (UE) 2016/679 (GDPR)**, questa pagina descrive le modalità di trattamento dei dati personali degli utenti che consultano il sito web di Ciro Andrea Strazzullo.
-                            </p>
-                        </section>
-
-                        <section id="dati" class="mt-8">
-                            <h2 class="text-xl md:text-2xl font-semibold flex items-center gap-2">
-                                <ShieldCheck class="text-primary" size={24} /> Dati raccolti
-                            </h2>
-                            <div class="mt-3 text-muted-foreground space-y-3">
-                                <p>Durante la navigazione possono essere raccolti:</p>
-                                <ul class="list-disc pl-5 space-y-2">
-                                    <li><strong>Dati forniti volontariamente:</strong> Nome ed email inviati tramite messaggi diretti o form di contatto.</li>
-                                    <li><strong>Dati di navigazione:</strong> Indirizzo IP, parametri del browser e tempi di permanenza, raccolti per fini tecnici e di sicurezza.</li>
-                                    <li><strong>Librerie di terze parti (CDN):</strong> Questo sito utilizza il servizio <strong>jsDelivr (ProspectOne)</strong> per l'erogazione di file necessari al funzionamento (es. script del banner cookie). Tale servizio può elaborare l'indirizzo IP dell'utente esclusivamente per la fornitura tecnica della risorsa richiesta.</li>
-                                    <li><strong>Cookie:</strong> Piccoli file di testo memorizzati nel browser (vedi sezione dedicata).</li>
-                                </ul>
-                            </div>
-                        </section>
-
-                        <section id="finalita" class="mt-8">
-                            <h2 class="text-xl md:text-2xl font-semibold">Finalità del trattamento</h2>
-                            <p class="mt-3 text-muted-foreground">I dati vengono utilizzati esclusivamente per:</p>
-                            <ul class="list-disc pl-5 mt-3 text-muted-foreground space-y-2">
-                                <li>Fornire assistenza e rispondere ai messaggi ricevuti.</li>
-                                <li>Monitorare la sicurezza del sito e prevenire attività fraudolente.</li>
-                                <li>Effettuare analisi statistiche anonime tramite Google Analytics 4 (solo in presenza di consenso esplicito).</li>
-                            </ul>
-                        </section>
-
-                        <section id="base" class="mt-8">
-                            <h2 class="text-xl md:text-2xl font-semibold">Base giuridica</h2>
-                            <p class="mt-3 text-muted-foreground">Il trattamento si fonda su:</p>
-                            <ul class="list-disc pl-5 mt-3 text-muted-foreground space-y-2">
-                                <li><strong>Consenso:</strong> Per i cookie di analisi.</li>
-                                <li><strong>Interesse Legittimo:</strong> Per la sicurezza e l'erogazione di contenuti tramite CDN.</li>
-                                <li><strong>Esecuzione di richieste:</strong> Per le comunicazioni via email.</li>
-                            </ul>
-                        </section>
-
-                        <section id="diritti" class="mt-8">
-                            <h2 class="text-xl md:text-2xl font-semibold">Diritti dell'interessato</h2>
-                            <p class="mt-3 text-muted-foreground">In qualità di interessato, hai il diritto di accedere ai tuoi dati, chiederne la rettifica, la cancellazione o la limitazione. Puoi inoltre opporti al trattamento o revocare il consenso precedentemente fornito. Le richieste vanno inoltrate al Titolare via email.</p>
-                            <p class="mt-2 text-muted-foreground font-semibold italic">Hai il diritto di proporre reclamo al Garante per la Protezione dei Dati Personali.</p>
-                        </section>
-
-                        <section id="cookie" class="mt-8 p-4 rounded-xl bg-primary/5 border border-primary/10">
-                            <h2 class="text-xl md:text-2xl font-semibold text-primary">Cookie e tecnologie simili</h2>
-                            <p class="mt-3 text-muted-foreground">
-                                Utilizziamo cookie tecnici necessari al funzionamento del sito e <strong>Google Analytics 4</strong> per fini statistici. GA4 è configurato per ridurre l'identificabilità dell'utente (es. anonimizzazione IP). Questi strumenti vengono attivati solo se l'utente fornisce il consenso tramite il banner visualizzato all'accesso.
-                            </p>
-                            <p class="mt-3 text-muted-foreground text-sm">
-                                Puoi gestire le tue preferenze sui cookie direttamente dalle impostazioni del tuo browser (Chrome, Firefox, Safari, ecc.).
-                            </p>
-                        </section>
-
-                        <section id="contatti" class="mt-8 mb-4">
-                            <h2 class="text-xl md:text-2xl font-semibold">Titolare del Trattamento</h2>
-                            <div class="mt-3 p-4 rounded-lg bg-muted/30 border border-border">
-                                <p class="text-foreground font-bold">Ciro Andrea Strazzullo</p>
-                                <p class="text-muted-foreground mt-1">Email: <a class="text-primary hover:underline" href="mailto:ciroandreastrazzullo06@gmail.com">ciroandreastrazzullo06@gmail.com</a></p>
-                            </div>
-                        </section>
-
-                        <footer class="mt-10 pt-6 border-t border-border text-xs text-muted-foreground">
-                            <p>Questa informativa è soggetta a revisioni. Le modifiche sostanziali saranno comunicate tramite aggiornamento della data in alto.</p>
-                        </footer>
+            <div class="glass-card p-6 md:p-10 rounded-2xl border border-border shadow-lg bg-card/50 backdrop-blur-sm">
+                <header class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 md:gap-6">
+                    <div>
+                        <h1 class="text-3xl md:text-4xl font-bold gradient-text">Informativa sulla Privacy</h1>
+                        <p class="text-sm text-muted-foreground mt-2">
+                            <Calendar size={14} className="inline-block mr-2"/>
+                            Ultimo aggiornamento: 29/01/2026
+                        </p>
+                        <p class="text-sm text-muted-foreground mt-3 max-w-2xl italic">
+                            Informazioni sulla gestione dei dati personali degli utenti che consultano questo sito
+                            web.
+                        </p>
                     </div>
-                </article>
+
+                </header>
+
+                <hr class="my-6 border-border"/>
+
+                <section id="introduzione" class="mt-4 prose prose-invert max-w-none text-muted-foreground">
+                    <p>
+                        Ai sensi del <strong>Regolamento (UE) 2016/679 (GDPR)</strong>, questa informativa descrive
+                        le modalità di raccolta e trattamento dei dati personali degli utenti del sito di <strong>Ciro
+                        Andrea Strazzullo</strong>.
+                    </p>
+                </section>
+
+                <section id="dati" class="mt-8">
+                    <h2 class="text-xl md:text-2xl font-semibold flex items-center gap-2">
+                        <ShieldCheck className="text-primary" size={24}/>
+                        Dati raccolti
+                    </h2>
+                    <div class="mt-3 text-muted-foreground space-y-3">
+                        <p>Durante la navigazione e l'uso del sito possono essere trattati i seguenti dati:</p>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li><strong>Dati forniti volontariamente:</strong> Nome, email e messaggi inviati
+                                tramite il form di contatto o via email.
+                            </li>
+                            <li><strong>Dati di navigazione:</strong> Indirizzo IP, user agent, pagine visitate,
+                                tempi di permanenza, cookie e altri identificatori tecnici necessari al
+                                funzionamento del sito.
+                            </li>
+                            <li><strong>Servizi di terze parti:</strong> Risorse erogate tramite CDN (es. jsDelivr)
+                                o servizi di analisi (es. Google Analytics) che possono trattare dati nei termini
+                                dei rispettivi provider.
+                            </li>
+                        </ul>
+                        <p class="text-sm text-muted-foreground italic">Nota: i dati raccolti per finalità tecniche
+                            non vengono utilizzati per profilazione in assenza di consenso esplicito.</p>
+                    </div>
+                </section>
+
+                <section id="finalita" class="mt-8">
+                    <h2 class="text-xl md:text-2xl font-semibold">Finalità del trattamento</h2>
+                    <p class="mt-3 text-muted-foreground">I dati sono trattati per le seguenti finalità:</p>
+                    <ul class="list-disc pl-5 mt-3 text-muted-foreground space-y-2">
+                        <li>Gestire le richieste di contatto e fornire assistenza.</li>
+                        <li>Garantire la sicurezza del sito e prevenire abusi o attività fraudolente.</li>
+                        <li>Raccogliere statistiche anonime sul traffico (solo previo consenso, es. tramite Google
+                            Analytics 4).
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="base" class="mt-8">
+                    <h2 class="text-xl md:text-2xl font-semibold">Base giuridica del trattamento</h2>
+                    <p class="mt-3 text-muted-foreground">Il trattamento si basa su:</p>
+                    <ul class="list-disc pl-5 mt-3 text-muted-foreground space-y-2">
+                        <li><strong>Consenso:</strong> per i cookie di profilazione e analisi.</li>
+                        <li><strong>Interesse legittimo:</strong> per motivi di sicurezza e funzionamento del sito.
+                        </li>
+                        <li><strong>Esecuzione di richieste:</strong> per l'invio di comunicazioni richieste
+                            dall'utente (es. risposte via email).
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="diritti" class="mt-8">
+                    <h2 class="text-xl md:text-2xl font-semibold">Diritti dell'interessato</h2>
+                    <p class="mt-3 text-muted-foreground">Hai il diritto di richiedere l'accesso, la rettifica, la
+                        cancellazione, la limitazione e la portabilità dei tuoi dati. Puoi revocare il consenso in
+                        qualsiasi momento senza compromettere la liceità del trattamento basata sul consenso prima
+                        della revoca.</p>
+                    <p class="mt-2 text-muted-foreground font-semibold italic">Per esercitare i tuoi diritti invia
+                        una richiesta a: <a class="text-primary hover:underline"
+                                            href="mailto:ciroandreastrazzullo06@gmail.com">ciroandreastrazzullo06@gmail.com</a>
+                    </p>
+                </section>
+
+                <section id="cookie" class="mt-8 p-4 rounded-xl bg-primary/5 border border-primary/10">
+                    <h2 class="text-xl md:text-2xl font-semibold text-primary">Cookie e tecnologie simili</h2>
+                    <p class="mt-3 text-muted-foreground">Questo sito utilizza cookie tecnici necessari al
+                        funzionamento e, previa autorizzazione, cookie di analisi tramite <strong>Google Analytics
+                            4</strong>. Per informazioni dettagliate e per gestire le preferenze consulta la <a
+                                class="text-primary hover:underline" href="/cookie-policy">Cookie Policy</a>.</p>
+                    <p class="mt-3 text-muted-foreground text-sm">Puoi gestire o bloccare i cookie dal tuo browser o
+                        utilizzare le impostazioni offerte dal banner dei cookie.</p>
+                </section>
+
+                <section id="conservazione" class="mt-8">
+                    <h2 class="text-xl md:text-2xl font-semibold">Conservazione dei dati</h2>
+                    <p class="mt-3 text-muted-foreground">I dati saranno conservati per il tempo necessario alle
+                        finalità per cui sono stati raccolti e nei limiti previsti dalla normativa applicabile. Per
+                        richieste specifiche di cancellazione, contattare il Titolare.</p>
+                </section>
+
+                <section id="contatti" class="mt-8 mb-4">
+                    <h2 class="text-xl md:text-2xl font-semibold">Titolare del Trattamento</h2>
+                    <div class="mt-3 p-4 rounded-lg bg-muted/30 border border-border">
+                        <p class="text-foreground font-bold">Ciro Andrea Strazzullo</p>
+                        <p class="text-muted-foreground mt-1">Email: <a class="text-primary hover:underline"
+                                                                        href="mailto:ciroandreastrazzullo06@gmail.com">ciroandreastrazzullo06@gmail.com</a>
+                        </p>
+                        <p class="text-muted-foreground mt-1  ">Cellulare: disponibile su richiesta.</p>
+                    </div>
+                </section>
             </div>
         </section>
     </main>
 
     <style>
-        html { scroll-behavior: smooth; }
-        .glass-card { transition: transform 0.2s ease; }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .glass-card {
+            transition: transform 0.15s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+        }
+
         @media print {
-            header, button, .flex.items-center.mb-6 { display: none !important; }
-            .glass-card { border: none; box-shadow: none; transform: none !important; }
-            body { background: white; color: black; }
+            header, button, .flex.items-center.mb-6 {
+                display: none !important;
+            }
+
+            .glass-card {
+                border: none;
+                box-shadow: none;
+                transform: none !important;
+            }
+
+            body {
+                background: white;
+                color: black;
+            }
         }
     </style>
 </Layout>
