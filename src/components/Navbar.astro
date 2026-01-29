@@ -1,0 +1,147 @@
+---
+// Navbar.astro
+const navLinks = [
+    {name: "About", href: "/#about"},
+    {name: "Progetti", href: "/#progetti"},
+    {name: "Contatti", href: "/#contatti"},
+];
+
+const pathname = Astro.url.pathname;
+// Gestisce sia "/" che eventuali sottopagine (es. /PrivacyPolicy)
+const isHome = pathname === "/" || pathname === "/index.html";
+---
+
+<nav
+        id="main-nav"
+        class="w-full fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-6"
+>
+    <div class="container px-6 mx-auto">
+        <div class="flex justify-between items-center">
+            <a href="/" class="code-font text-xl font-bold text-primary hover:opacity-80 transition-opacity">
+                &lt;Dev /&gt;
+            </a>
+
+            <div class="hidden md:flex items-center gap-8">
+                {isHome && (
+                        <>
+                            {navLinks.map((link, index) => (
+                                    <a
+                                            href={link.href}
+                                            class="text-sm text-muted-foreground hover:text-primary transition-colors"
+                                    >
+                                        <span class="text-primary code-font">0{index + 1}.</span> {link.name}
+                                    </a>
+                            ))}
+                            <a
+                                    href="/cv.pdf"
+                                    target="_blank"
+                                    class="px-4 py-2 border border-primary text-primary text-sm rounded hover:bg-primary/10 transition-colors"
+                            >
+                                Curriculum
+                            </a>
+                        </>
+                )}
+            </div>
+
+            {isHome && (
+                    <button
+                            id="menu-toggle"
+                            class="md:hidden p-2 text-foreground focus:outline-none"
+                            aria-label="Toggle menu"
+                    >
+                        <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                            <line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line>
+                        </svg>
+                        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 hidden">
+                            <path d="M18 6 6 18"></path><path d="m6 6 12 12"></path>
+                        </svg>
+                    </button>
+            )}
+        </div>
+
+        {isHome && (
+                <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 glass-card border-b border-border p-6 animate-slide-up bg-background/95 backdrop-blur-md">
+                    <div class="flex flex-col gap-6">
+                        {navLinks.map((link, index) => (
+                                <a
+                                        href={link.href}
+                                        class="mobile-link text-lg text-muted-foreground hover:text-primary transition-colors"
+                                >
+                                    <span class="text-primary code-font">0{index + 1}.</span> {link.name}
+                                </a>
+                        ))}
+                        <a
+                                href="/cv.pdf"
+                                target="_blank"
+                                class="px-4 py-2 border border-primary text-primary text-center rounded hover:bg-primary/10 transition-colors"
+                        >
+                            Curriculum
+                        </a>
+                    </div>
+                </div>
+        )}
+    </div>
+</nav>
+
+<script>
+    // Funzione di inizializzazione per gestire lo stato della Navbar
+    const initNavbar = () => {
+        const nav = document.getElementById('main-nav');
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconMenu = document.getElementById('icon-menu');
+        const iconClose = document.getElementById('icon-close');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        // 1. Gestione Scroll (Sempre attiva per l'effetto vetro)
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav?.classList.add('glass-card', 'border-b', 'border-border', 'py-4', 'bg-background/80', 'backdrop-blur-md');
+                nav?.classList.remove('py-6');
+            } else {
+                nav?.classList.remove('glass-card', 'border-b', 'border-border', 'py-4', 'bg-background/80', 'backdrop-blur-md');
+                nav?.classList.add('py-6');
+            }
+        });
+
+        // 2. Logica Menu Mobile (Solo se gli elementi esistono nel DOM)
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                const isOpening = mobileMenu.classList.toggle('hidden');
+                // Switch icone SVG
+                iconMenu?.classList.toggle('hidden');
+                iconClose?.classList.toggle('hidden');
+            });
+
+            // Chiude il menu al click sui link (utile per le ancore #)
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    iconMenu?.classList.remove('hidden');
+                    iconClose?.classList.add('hidden');
+                });
+            });
+        }
+    };
+
+    // Esegui al caricamento della pagina
+    initNavbar();
+
+    // Se utilizzi View Transitions in Astro, scommenta la riga sotto:
+    // document.addEventListener('astro:after-swap', initNavbar);
+</script>
+
+<style>
+    .animate-slide-up {
+        animation: slideUp 0.3s ease-out forwards;
+    }
+
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .code-font {
+        font-family: 'Space Mono', monospace;
+    }
+</style>
