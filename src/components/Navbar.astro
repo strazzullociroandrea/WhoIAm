@@ -7,7 +7,6 @@ const navLinks = [
 ];
 
 const pathname = Astro.url.pathname;
-// Gestisce sia "/" che eventuali sottopagine (es. /PrivacyPolicy)
 const isHome = pathname === "/" || pathname === "/index.html";
 ---
 
@@ -32,6 +31,7 @@ const isHome = pathname === "/" || pathname === "/index.html";
                                         <span class="text-primary code-font">0{index + 1}.</span> {link.name}
                                     </a>
                             ))}
+                            <!--
                             <a
                                     href="/cv.pdf"
                                     target="_blank"
@@ -39,6 +39,7 @@ const isHome = pathname === "/" || pathname === "/index.html";
                             >
                                 Curriculum
                             </a>
+                            -->
                         </>
                 )}
             </div>
@@ -49,18 +50,26 @@ const isHome = pathname === "/" || pathname === "/index.html";
                             class="md:hidden p-2 text-foreground focus:outline-none"
                             aria-label="Toggle menu"
                     >
-                        <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
-                            <line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line>
+                        <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                            <line x1="4" x2="20" y1="12" y2="12"></line>
+                            <line x1="4" x2="20" y1="6" y2="6"></line>
+                            <line x1="4" x2="20" y1="18" y2="18"></line>
                         </svg>
-                        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 hidden">
-                            <path d="M18 6 6 18"></path><path d="m6 6 12 12"></path>
+                        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 hidden">
+                            <path d="M18 6 6 18"></path>
+                            <path d="m6 6 12 12"></path>
                         </svg>
                     </button>
             )}
         </div>
 
         {isHome && (
-                <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 glass-card border-b border-border p-6 animate-slide-up bg-background/95 backdrop-blur-md">
+                <div id="mobile-menu"
+                     class="hidden md:hidden absolute top-full left-0 right-0 glass-card border-b border-border p-6 animate-slide-up bg-background/95 backdrop-blur-md">
                     <div class="flex flex-col gap-6">
                         {navLinks.map((link, index) => (
                                 <a
@@ -70,6 +79,7 @@ const isHome = pathname === "/" || pathname === "/index.html";
                                     <span class="text-primary code-font">0{index + 1}.</span> {link.name}
                                 </a>
                         ))}
+                        <!--
                         <a
                                 href="/cv.pdf"
                                 target="_blank"
@@ -77,6 +87,7 @@ const isHome = pathname === "/" || pathname === "/index.html";
                         >
                             Curriculum
                         </a>
+                        -->
                     </div>
                 </div>
         )}
@@ -93,7 +104,6 @@ const isHome = pathname === "/" || pathname === "/index.html";
         const iconClose = document.getElementById('icon-close');
         const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        // 1. Gestione Scroll (Sempre attiva per l'effetto vetro)
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 nav?.classList.add('glass-card', 'border-b', 'border-border', 'py-4', 'bg-background/80', 'backdrop-blur-md');
@@ -104,7 +114,6 @@ const isHome = pathname === "/" || pathname === "/index.html";
             }
         });
 
-        // 2. Logica Menu Mobile (Solo se gli elementi esistono nel DOM)
         if (menuToggle && mobileMenu) {
             menuToggle.addEventListener('click', () => {
                 const isOpening = mobileMenu.classList.toggle('hidden');
@@ -113,7 +122,6 @@ const isHome = pathname === "/" || pathname === "/index.html";
                 iconClose?.classList.toggle('hidden');
             });
 
-            // Chiude il menu al click sui link (utile per le ancore #)
             mobileLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.add('hidden');
@@ -124,11 +132,8 @@ const isHome = pathname === "/" || pathname === "/index.html";
         }
     };
 
-    // Esegui al caricamento della pagina
     initNavbar();
 
-    // Se utilizzi View Transitions in Astro, scommenta la riga sotto:
-    // document.addEventListener('astro:after-swap', initNavbar);
 </script>
 
 <style>
@@ -137,8 +142,14 @@ const isHome = pathname === "/" || pathname === "/index.html";
     }
 
     @keyframes slideUp {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     .code-font {
