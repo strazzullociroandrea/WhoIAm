@@ -1,5 +1,5 @@
 ---
-import {Mail, FileText} from "lucide-react";
+import {Mail} from "lucide-react";
 ---
 
 <section class="py-10 px-6 max-w-7xl mx-auto" id="contatti">
@@ -10,14 +10,13 @@ import {Mail, FileText} from "lucide-react";
 
     <div class="max-w-xl mx-auto text-center">
         <p class="text-muted-foreground text-base leading-relaxed mb-8">
-            Hai un progetto in mente? Amo le sfide tecniche <br class="hidden md:block"/>
+            Hai  un progetto in mente? Amo le sfide tecniche <br class="hidden md:block"/>
             e sono sempre aperto a nuove collaborazioni.
         </p>
 
         <div class="flex flex-col md:flex-row justify-center items-center gap-4 mt-12 w-full">
-
-            <a href="mailto:info@cirostrazzullo.it"
-               target="_blank"
+ 
+            <div  
                class="flex items-center gap-4 px-6 py-4 rounded-2xl bg-secondary/10 border border-white/5 hover:border-primary/50 transition-all group w-full max-w-sm md:w-auto">
                 <div class="p-2.5 bg-primary/10 rounded-xl text-primary group-hover:bg-primary group-hover:text-black transition-colors shrink-0">
                     <Mail size={18}/>
@@ -28,19 +27,8 @@ import {Mail, FileText} from "lucide-react";
                 info@cirostrazzullo.it
             </span>
                 </div>
-            </a>
+            </div>
 
-            <a href="/CV_Ciro_Andrea_Strazzullo.pdf"
-               download="CV_Ciro_Andrea_Strazzullo.pdf"
-               class="flex w-fit items-center gap-4 px-6 py-4 rounded-2xl bg-secondary/10 border border-white/5 hover:border-primary/50 transition-all group max-w-sm md:w-auto">
-                <div class="p-2.5 bg-primary/10 rounded-xl text-primary group-hover:bg-primary group-hover:text-black transition-colors shrink-0">
-                    <FileText size={18}/>
-                </div>
-                <div class="flex flex-col text-left">
-                    <span class="text-[10px] uppercase tracking-wider font-bold text-primary">Scarica</span>
-                    <span class="text-sm font-medium">CV</span>
-                </div>
-            </a>
         </div>
     </div>
 </section>
