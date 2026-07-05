@@ -2,6 +2,22 @@
 import {Folder, Github, ExternalLink} from "lucide-react";
 const projectsFeatured = [
     {
+        title: "Sito vetrina – Black Bulls Volley",
+        description: "Creazione e gestione del sito vetrina per la presenza digitale del club.",
+        link: "https://blackbullsvolley.it/",
+        tech: ["AstroJs", "Typescript", "Tailwind CSS", "ShadCN UI", "Cloudflare", "pnpm"],
+        github: "https://github.com/strazzullociroandrea/Black_Bulls_Volley.git",
+        live: "https://blackbullsvolley.it/"
+    },
+    {
+        title: "MatchTime",
+        description: "Sviluppo di una web app che elabora dati non strutturati (PDF dei comitati sportivi) recuperati tramite un'API dedicata, per generare un calendario consultabile e sincronizzabile.",
+        link: "https://match.cirostrazzullo.it/",
+        tech: ["AstroJS", "Typescript", "pnpm", "Tailwind CSS", "Shadcn UI", "Cloudflare"],
+        github: "https://github.com/strazzullociroandrea/matchtime.git",
+        live: "https://match.cirostrazzullo.it/"
+    },
+    {
         title: "generateproj",
         description: "Interfaccia a riga di comando (CLI), pubblicata su npm, con lo scopo di automatizzare il setup iniziale di progetti software, permettendo agli sviluppatori di generare strutture di directory standardizzate con un singolo comando.",
         link: "#",
@@ -18,23 +34,34 @@ const projectsFeatured = [
         <h2 class="gradient-text text-4xl font-bold">I miei progetti</h2>
     </div>
 
-    <div className="space-y-24 mb-24">
+    <div class="space-y-24 mb-24">
 
         {
             projectsFeatured.map((project, index) => {
                 return (
                         <>
                             <div
-                                    key={project.title}
-                                    className={`mt-5 grid lg:grid-cols-2 gap-8 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
+                                    id={project.title}
+                                    class={`mt-5 grid lg:grid-cols-2 gap-8 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
                             >
                                 <div class={`order-1 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                                    <div class="aspect-video rounded-xl bg-gradient-to-br from-primary/20 via-secondary to-primary/10 border border-border flex items-center justify-center group hover:border-primary/30 transition-all duration-300">
-                                        <div class="text-center">
-                                            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                                <Folder className="w-8 h-8 text-primary"/>
-                                            </div>
-                                        </div>
+                                    <div class="aspect-video rounded-xl bg-linear-to-br from-primary/20 via-secondary to-primary/10 border border-border flex items-center justify-center group hover:border-primary/30 transition-all duration-300">
+                                        {
+                                            project.link === "#" ? (
+                                                    <div class="text-center">
+                                                        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                                            <Folder className="w-8 h-8 text-primary"/>
+                                                        </div>
+                                                    </div>
+                                            ) : (
+                                                    <a href={project.link} target="_blank"
+                                                       class="w-full h-full flex items-center justify-center">
+                                                        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                                            <Folder className="w-8 h-8 text-primary"/>
+                                                        </div>
+                                                    </a>
+                                            )
+                                        }
                                     </div>
                                 </div>
                                 <div class={`order-2 ${index % 2 === 1 ? 'lg:order-1 lg:text-right' : ''}`}>
@@ -45,7 +72,7 @@ const projectsFeatured = [
                                     </div>
                                     <div class={`flex flex-wrap gap-2 mb-4 ${index % 2 === 1 ? 'lg:justify-end' : ''}`}>
                                         {project.tech.map((tech) => (
-                                                <span key={tech}
+                                                <span id={tech}
                                                       class=" text-sm text-muted-foreground ">{tech}</span>
                                         ))}
                                     </div>
