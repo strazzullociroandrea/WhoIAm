@@ -2,6 +2,14 @@
 import {Folder, Github, ExternalLink} from "lucide-react";
 const projectsFeatured = [
     {
+        title: "Sito vetrina e gestionale - Lullaby Animazioni",
+        description: "Sviluppo completo della nuova piattaforma digitale per Lullaby Animazioni: sito web dinamico integrato con un CMS custom per la gestione autonoma dei contenuti, migrazione dell'infrastruttura di dominio e configurazione del sistema di posta aziendale.",
+        link: "https://lullabyanimazioni.it",
+        tech: ["Next.js", "Payload CMS", "PostgreSQL", "TypeScript", "Tailwind CSS", "Coolify", "Hostinger VPS"],
+        github: "",
+        live: "https://lullabyanimazioni.it"
+    },
+    {
         title: "Sito vetrina – Black Bulls Volley",
         description: "Creazione e gestione del sito vetrina per la presenza digitale del club.",
         link: "https://blackbullsvolley.it/",
@@ -66,25 +74,29 @@ const projectsFeatured = [
                                 </div>
                                 <div class={`order-2 ${index % 2 === 1 ? 'lg:order-1 lg:text-right' : ''}`}>
                                     <p class="text-primary code-font text-sm mb-2">Featured Project</p>
-                                    <h3 class="text-2xl font-bold   mb-4">{project.title}</h3>
+                                    <h3 class="text-2xl font-bold mb-4">{project.title}</h3>
                                     <div class="glass-card p-6 rounded-xl mb-4">
                                         <p class="text-muted-foreground">{project.description}</p>
                                     </div>
                                     <div class={`flex flex-wrap gap-2 mb-4 ${index % 2 === 1 ? 'lg:justify-end' : ''}`}>
                                         {project.tech.map((tech) => (
                                                 <span id={tech}
-                                                      class=" text-sm text-muted-foreground ">{tech}</span>
+                                                      class="text-sm text-muted-foreground">{tech}</span>
                                         ))}
                                     </div>
                                     <div class={`flex gap-4 ${index % 2 === 1 ? 'lg:justify-end' : ''}`}>
-                                        <a href={project.github} target="_blank"
-                                           class="p-2 text-muted-foreground hover:text-primary transition-colors">
-                                            <Github className="w-5 h-5"/>
-                                        </a>
-                                        <a href={project.live} target="_blank"
-                                           class="p-2 text-muted-foreground hover:text-primary transition-colors">
-                                            <ExternalLink className="w-5 h-5"/>
-                                        </a>
+                                        {project.github && project.github.trim() !== "" ? (
+                                                <a href={project.github} target="_blank"
+                                                   class="p-2 text-muted-foreground hover:text-primary transition-colors">
+                                                    <Github className="w-5 h-5"/>
+                                                </a>
+                                        ) : null}
+                                        {project.live && project.live.trim() !== "" ? (
+                                                <a href={project.live} target="_blank"
+                                                   class="p-2 text-muted-foreground hover:text-primary transition-colors">
+                                                    <ExternalLink className="w-5 h-5"/>
+                                                </a>
+                                        ) : null}
                                     </div>
                                 </div>
                             </div>
